@@ -19,5 +19,20 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-source-strapi`,
+      options: {
+        apiURL: `http://localhost:1337/api`,
+        queryLimit: 1000, // Default to 100
+        collectionTypes: [`job`], // will throw error if type has no data, might have to use contentTye or collectionType (version depending)
+        // contentTypes: [`job`], // will throw error if type has no data, might have to use contentTye or collectionType (version depending)
+        // singleTypes: [`siteConfig`],
+        // Possibility to login with a strapi user, when content types are not publically available (optional).
+        // loginData: {
+        //   identifier: "",
+        //   password: "",
+        // },
+      },
+    },
   ],
 }

@@ -80,8 +80,13 @@ name it "desc" and choose component "job_description"
 - can access content as JSON through content type url parameter
     http://localhost:1337/api/jobs
     Ensure you can see the JSON data!
+- to see nested component (1 level deep)
+```
+http://localhost:1337/api/jobs?populate=*
+```
 
 ### Use gatsby-source-strapi plugin
-- install
+- ACHTUNG!!! install need to have @latest -> breaking change; need to specify collectionTypes (not contenTypes in config) 
     npm install gatsby-source-strapi@latest
 - use collectionTypes (not contentTypes like in old version)
+- BUG! For some reason my strapi component (used for repeating text items for each job) is not picked up by plugin
