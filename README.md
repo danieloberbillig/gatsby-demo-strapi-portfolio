@@ -1,5 +1,14 @@
 # Gatsby-Strapi Portfolio Starter
 
+## General
+- based on Gatsby-Strapi Portfolio Starter https://github.com/john-smilga/starter-project-gatsby-v3-strapi-portfolio
+- Udemy tutorial: https://servian.udemy.com/course/gatsby-tutorial-and-projects-course/learn/lecture/25932158#notes
+- Contains personal notes and customisation
+- created 04/01/2022
+
+
+# Original Readme from tutorial
+
 ## Setup Notes
 
 1. Used Hello World Starter (all packages included)
