@@ -6,7 +6,7 @@ import { Link } from "gatsby"
 
 
 const Navbar = () => {
-  return <nav>
+  return <nav className="navbar">
     <div className="nav-center">
       <div className="nav-header">
         {/* logo and menu hamburger */}
@@ -16,6 +16,7 @@ const Navbar = () => {
         </button>
       </div>
       <div className="nav-links">
+        {/* navigation links */}
         {/* iterate over central list of nav links, each link has id, text, url */}
         {pageLinks.map((link) => {
           return (
