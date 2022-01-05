@@ -49,6 +49,7 @@ const data = [
 ```
 npx create-strapi-app@latest gatsby-demo-strapi-portfolio-backend --quickstart
 ```
+- I think Strapi v4 is the reason for the bug described below: the gatsby plugin only works for v3!
 - is running as a local server / seperate codebase / terminal
 - --quickstart starts server in same terminal and opens browser to configure Admin first
 - can also run in Visual Studio Code with     npm run develop
@@ -87,6 +88,7 @@ http://localhost:1337/api/jobs?populate=*
 
 ### Use gatsby-source-strapi plugin
 - ACHTUNG!!! install need to have @latest -> breaking change; need to specify collectionTypes (not contenTypes in config) 
+- I think Strapi v4 is the reason for the bug described below: the gatsby plugin only works for v3!
     npm install gatsby-source-strapi@latest
 - use collectionTypes (not contentTypes like in old version)
 - BUG! For some reason my strapi component (used for repeating text items for each job) is not picked up by plugin
