@@ -22,9 +22,9 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: `http://localhost:1337/api`,
+        apiURL: `http://localhost:1337`,
         queryLimit: 1000, // Default to 100
-        collectionTypes: [`job`], // will throw error if type has no data, might have to use contentTye or collectionType (version depending)
+        collectionTypes: [`job`, `project`], // will throw error if type has no data, might have to use contentTye or collectionType (version depending)
         // contentTypes: [`job`], // will throw error if type has no data, might have to use contentTye or collectionType (version depending)
         // singleTypes: [`siteConfig`],
         // Possibility to login with a strapi user, when content types are not publically available (optional).

@@ -1,6 +1,6 @@
 import React from "react"
 import Title from "./Title"
-import { FaAngleDoubleRight } from "react-icons/fa"
+import { FaAngleDoubleRight, FaLongArrowAltRight } from "react-icons/fa"
 import { graphql, useStaticQuery } from "gatsby"
 import { Link } from "gatsby"
 
@@ -8,13 +8,12 @@ const query = graphql`
   {
     allStrapiJob {
       nodes {
-        data {
+        company
+        position
+        date
+        desc {
           id
-          attributes {
-            company
-            position
-            Date
-          }
+          desc
         }
       }
     }
@@ -23,9 +22,9 @@ const query = graphql`
 
 const Jobs = () => {
   const data = useStaticQuery(query)
-  const jobs = data.allStrapiJob.nodes[0].data
+  const { allStrapiJob: { nodes: jobs }, } = data;
   const [value, setValue] = React.useState(0) // state management which job user sees
-  const { position, company, Date } = jobs[value].attributes // shows job set in state management
+  const { position, company, date, desc } = jobs[value] // shows job set in state management
 
   return (
     <section className="section jobs">
@@ -40,7 +39,7 @@ const Jobs = () => {
                 className={index === value ? "job-btn active-btn" : "job-btn"} // if active job, then style active button
                 onClick={() => setValue(index)} // changes state (user clicks button to see other job)
               >
-                {item.attributes.company}
+                {item.company}
               </button>
             )
           })}
@@ -49,8 +48,15 @@ const Jobs = () => {
         <article className="job-info">
           <h3>{position}</h3>
           <h4>{company}</h4>
-          <p className="job-date">{Date}</p>
-          {/* {desc.map...}   - description not working - does not get picked up by plugin */}
+          <p className="job-date">{date}</p>
+          {desc.map(item => {
+            return (
+              <div key={item.id} className="job-desc">
+                <FaLongArrowAltRight className="job-icon"></FaLongArrowAltRight>
+                <p>{item.desc}</p>
+              </div>
+            )
+          })}
         </article>
       </div>
       <Link to="/about" className="btn center-btn">

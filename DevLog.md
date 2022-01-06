@@ -44,15 +44,23 @@ const data = [
 
 ## Strapi headless CMS
 - most popular open source headless cms
-- Warning: Strapi headless CMS might not work with node v16...could cause error
 - need to be installed locally with npx
+- need old v3 Strapi version to work with Gatsby plugin -do not install latest (v4) version!
 ```
-npx create-strapi-app@latest gatsby-demo-strapi-portfolio-backend --quickstart
+npx create-strapi-app@3.6.8
+gatsby-demo-strapi-v3-portfolio-backend --quickstart
 ```
-- I think Strapi v4 is the reason for the bug described below: the gatsby plugin only works for v3!
+
+also v3 needs old version of node; go in project path, then
+```
+npm install node@14.0.0 --save-exact
+```
 - is running as a local server / seperate codebase / terminal
 - --quickstart starts server in same terminal and opens browser to configure Admin first
-- can also run in Visual Studio Code with     npm run develop
+- can also run in Visual Studio Code with     
+```
+npm run develop
+```
 - Strapi local server has to run while we develop Gatsby Front-End (its the backend!)
 - visit http://localhost:1337/admin/
 
@@ -79,16 +87,13 @@ name it "desc" and choose component "job_description"
     - mark 'find' and 'findone' 
     - its like REST API setup 
 - can access content as JSON through content type url parameter
-    http://localhost:1337/api/jobs
+    http://localhost:1337/jobs
     Ensure you can see the JSON data!
-- to see nested component (1 level deep)
-```
-http://localhost:1337/api/jobs?populate=*
-```
+- create UID field and name it 'slug' -> creates from title a url friendly parameter like /new-project/
+
 
 ### Use gatsby-source-strapi plugin
-- ACHTUNG!!! install need to have @latest -> breaking change; need to specify collectionTypes (not contenTypes in config) 
-- I think Strapi v4 is the reason for the bug described below: the gatsby plugin only works for v3!
-    npm install gatsby-source-strapi@latest
-- use collectionTypes (not contentTypes like in old version)
-- BUG! For some reason my strapi component (used for repeating text items for each job) is not picked up by plugin
+- might have to use collectionTypes (not contentTypes like in old version) in gatsby config
+- BUG for v4 strapi! For some reason my strapi component (used for repeating text items for each job) is not picked up by plugin 
+  => Solution work with old v3 strapi version
+
