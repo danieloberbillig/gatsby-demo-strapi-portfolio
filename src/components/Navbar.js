@@ -5,13 +5,13 @@ import pageLinks from "../constants/links"    // pageLinks can be named anything
 import { Link } from "gatsby"
 
 
-const Navbar = () => {
+const Navbar = ({ toggleSidebar }) => {
   return <nav className="navbar">
     <div className="nav-center">
       <div className="nav-header">
         {/* logo and menu hamburger */}
         <img src={logo} alt="Web Dev" />
-        <button type="button" className="toggle-btn">
+        <button type="button" className="toggle-btn" onClick={toggleSidebar}>
           <FaAlignRight />
         </button>
       </div>

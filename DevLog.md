@@ -8,6 +8,17 @@
 - uses gatsby-ssr.js for server side rendering: content is just copy from gatsby-browser.js
 - have list items (like navigation links (about, contact, projects,...) in a data file in src/constants/links.js), so it can be reused in header, footer, main....
 
+## Deploy
+- in current setup where Strapi server is running locally - you can only deploy it by drag and drop final files from /public after build!
+```
+gatsby clean
+gatsby build
+```
+
+## SEO Component
+- its more or less a total copy from the "SEO component" documentation code on the gatsby website
+
+
 ## SVG import vs StaticImage
 
 - For SVG you should use StaticImage, but need width to control height. can also import directly <img src={heroImg}>

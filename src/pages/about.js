@@ -11,12 +11,46 @@ src={image.publicURL}
 <img src={image[0].localFile.publicURL} alt={title} className="about-img-svg" />
 */
 
-const About = () => {
+const About = ({ data }) => {
+  const { strapiAbout: { title, image, info, stack } } = data;
   return (
     <>
-      <h2>about page</h2>
+      <Seo title="About" />
+      <section className="aboutPage" >
+        <div className="section-center about-center">
+          {/* <img src={image.publicURL} alt={title} className="about-img-svg" /> */}
+          <article className="about-text">
+            <Title title={title} />
+            <p>{info}</p>
+            <div className="about-stack">
+              {stack.map((item) => {
+                return <span key={item.id}>{item.stack_item}</span>
+              })}
+            </div>
+          </article>
+        </div>
+      </section>
     </>
   )
 }
+
+export const query = graphql`
+  {
+    strapiAbout {
+      title
+      info
+      stack {
+        id
+        stack_item
+      }
+      image {
+        localFile {
+          publicURL
+        }
+      }
+    }
+  }
+`
+
 
 export default About

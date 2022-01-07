@@ -6,23 +6,26 @@ import Jobs from "../components/Jobs"
 import Projects from "../components/Projects"
 import Seo from "../components/Seo"
 
-
-const IndexPage = ({data}) => {
-  const { allStrapiProject:{nodes:projects}} = data
+const IndexPage = ({ data }) => {
+  const {
+    allStrapiProject: { nodes: projects },
+  } = data
   return (
     <>
-      <Hero />
-      <Services />
-      <Jobs />
-      <Projects title="featured project"  showLink projects={projects}/>
+      <Seo title="Home" />
+      <main>
+        <Hero />
+        <Services />
+        <Jobs />
+        <Projects title="featured project" showLink projects={projects} />
+      </main>
     </>
   )
 }
 
-
 export const query = graphql`
   {
-    allStrapiProject(filter: {featured: {eq: true}}) {
+    allStrapiProject(filter: { featured: { eq: true } }) {
       nodes {
         description
         featured
@@ -45,7 +48,6 @@ export const query = graphql`
       }
     }
   }
-`;
-
+`
 
 export default IndexPage
