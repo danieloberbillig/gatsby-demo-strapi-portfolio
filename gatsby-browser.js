@@ -1,4 +1,5 @@
 // purpose: to wrap every page programmatically in Layout.js component
+// to wrap your page components in additional global components
 // no page imports the Layout.js component manually 
 // follows the documentation here: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-browser/
 

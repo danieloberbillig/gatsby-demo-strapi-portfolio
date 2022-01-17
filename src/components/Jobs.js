@@ -18,12 +18,12 @@ const query = graphql`
       }
     }
   }
-`
+`;
 
 const Jobs = () => {
   const data = useStaticQuery(query)
-  const { allStrapiJob: { nodes: jobs }, } = data;
-  const [value, setValue] = React.useState(0) // state management which job user sees
+  const { allStrapiJob: { nodes: jobs }, } = data;  // destructure + assign alias 'jobs' to array of jobs
+  const [value, setValue] = React.useState(0) // state management which job user sees: returns stateful value and a function to update value
   const { position, company, date, desc } = jobs[value] // shows job set in state management
 
   return (

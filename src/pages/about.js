@@ -34,6 +34,7 @@ const About = ({ data }) => {
   )
 }
 
+// name of query is not important -> gatsby looks for the exported graphql string - there can only be one page query per file!
 export const query = graphql`
   {
     strapiAbout {

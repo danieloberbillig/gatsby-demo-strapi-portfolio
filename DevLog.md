@@ -1,5 +1,10 @@
 # DevLog of gatsby-demo-strapi-portfolio
 
+
+!!!!!
+CONTINUE WITH Layout - describe what you see in component
+!!!!!
+
 ## General
 
 - change VS Code bottom row "JavaScript" to "JavaScript React" to enable autocomplete
@@ -7,6 +12,7 @@
   - no page imports manually the layout component
 - uses gatsby-ssr.js for server side rendering: content is just copy from gatsby-browser.js
 - have list items (like navigation links (about, contact, projects,...) in a data file in src/constants/links.js), so it can be reused in header, footer, main....
+  - constants == data folder
 
 ## Deploy
 - in current setup where Strapi server is running locally - you can only deploy it by drag and drop final files from /public after build!
@@ -14,6 +20,20 @@
 gatsby clean
 gatsby build
 ```
+
+## /static vs src/assets
+- import everything into .js files to make use of minification/optimization
+- /static/sun.jpg is later in /public/sun.jpg -> not optimized!
+- only use /static for specific file names eg manifest.webmanifest or include small scripts outside bundled code; libraries not working with webpack; inconsistent JSON
+- better use StaticImage (see Hero.js component) from gatsby-plugin-image
+
+## Styles
+- main.css (all styles) only imported in Layout.js component!
+- Layout,js is the top-level wrapper which is wrapped through gatsby-browser.js
+- no page imports the Layout.js component manually
+- gatsby-browser.js
+    - wrap your page components in additional global components
+
 
 ## SEO Component
 - its more or less a total copy from the "SEO component" documentation code on the gatsby website
@@ -108,3 +128,41 @@ name it "desc" and choose component "job_description"
 - BUG for v4 strapi! For some reason my strapi component (used for repeating text items for each job) is not picked up by plugin 
   => Solution work with old v3 strapi version
 
+## State management React useState Hook
+- import React, { useState } from "react"
+- State Hook to use state without writing a class
+- can use multiple state variables - just name them differently
+- example:
+```
+import React, { useState } from 'react';
+
+function Example() {
+  // Declare a new state variable, which we'll call "count"
+  // Declare a new state variable, which we'll call "isOpen"; useState(=initial state value)
+  // const [a,b] = ...  -> 'Array destructuring' -> make two variables from returned array
+  // useState returns 1) current state and 2) a function to update it
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+```
+
+
+- Key attribute in html: React needs Key to determine how to update the DOM
+  <button key={index}>
+
+
+## GraphQL
+-  name of query is not important -> gatsby looks for the exported graphql string - there can only be one page query per file!
+
+  const IndexPage = ({ data }) => {...}
+  
+  export const query = graphql`
+    {
